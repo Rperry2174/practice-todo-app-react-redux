@@ -7,6 +7,10 @@ import store from './store'
 import {Provider} from 'react-redux'
 import Todo from './Todo'
 import { addTodo } from './action'
+import Knight from './Knight';
+import GardenSquare from './GardenSquare.js'
+import Garden from './Garden.js'
+
 
 const App = React.createClass({
   getInitialState () {
@@ -23,11 +27,15 @@ const App = React.createClass({
   render () {
     return (
         <Provider store={store}>
+        <div>
           <div className="container">
             <h1 className="text-center">To Do List</h1>
             <Home/>
             <Todo />
           </div>
+          <Garden knightPosition={[4,4]} />
+        </div>
+
         </Provider>
     )
   }
