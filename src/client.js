@@ -33,7 +33,7 @@ const App = React.createClass({
             <Home/>
             <Todo />
           </div>
-          <Garden knightPosition={[4,4]} />
+          <Garden location={[1,1]} />
         </div>
 
         </Provider>

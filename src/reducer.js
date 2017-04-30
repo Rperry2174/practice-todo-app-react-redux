@@ -1,6 +1,7 @@
 const initialState = {
   searchTerm: '',
-  todos: []
+  todos: [],
+  location: [1, 1]
 };
 
 const setSearchTerm = (state, action) => {
@@ -35,6 +36,15 @@ const removeTodo = (state, action) => {
   // return Object.assign({}, state, {todos: todos.filter((todo) => todo._id !== action.id)})
 };
 
+const movePiece = (state, action) => {
+  const {location} = state;
+  const newState = {};
+  Object.assign(newState, state, {location: action.location})
+
+  console.log('(before) state: ', state)
+  console.log('(after) state: ', newState)
+}
+
 function reducer(state = initialState, action) {
   console.log('reducer.js - Reducer called');
   console.log('current action: ', action)
@@ -45,6 +55,8 @@ function reducer(state = initialState, action) {
       return addTodos(state, action);
     case 'REMOVE_TODO':
       return removeTodo(state, action);
+    case 'MOVE_PIECE':
+      return movePiece(state, action);
     default:
       return state
   }

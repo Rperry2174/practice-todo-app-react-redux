@@ -1,13 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import GardenSquare from './GardenSquare';
 import Knight from './Knight';
+import { connect } from 'react-redux'
 
-export default class Garden extends Component {
-  static propTypes = {
-    knightPosition: PropTypes.arrayOf(
-      PropTypes.number.isRequired
-    ).isRequired
-  };
+import { movePiece } from './action'
+
+
+// export default class Garden extends Component {
+const Garden = React.createClass({
+  // static propTypes = {
+  //   knightPosition: PropTypes.arrayOf(
+  //     PropTypes.number.isRequired
+  //   ).isRequired
+  // };
 
   renderGardenSquare(i) {
     const x = i % 8;
@@ -18,7 +23,7 @@ export default class Garden extends Component {
     console.log("y: ", y)
 
 
-    const [knightX, knightY] = this.props.knightPosition;
+    const [knightX, knightY] = this.props.location;
     const piece = (x === knightX && y === knightY) ?
       <Knight /> :
       null;
@@ -31,7 +36,7 @@ export default class Garden extends Component {
         </GardenSquare>
       </div>
     );
-  }
+  },
 
   render() {
     const gardenSquares = [];
@@ -42,7 +47,7 @@ export default class Garden extends Component {
     return (
       <div style={{
         width: '100%',
-        height: '100%',
+        height: '500px',
         display: 'flex',
         flexWrap: 'wrap'
       }}>
@@ -50,7 +55,22 @@ export default class Garden extends Component {
       </div>
     );
   }
+})
 
+// const mapStateToProps = (state) => {
+//   return{
+//     location: state.location
+//   }
+// }
 
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     dispatchMovePiece (location) {
+//       dispatch(movePiece(location))
+//     }
+//   }
+// };
 
-}
+// export default connect(mapStateToProps, mapDispatchToProps)(Garden)
+export default Garden
+

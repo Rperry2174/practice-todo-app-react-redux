@@ -12,3 +12,8 @@ export function removeTodo(id) {
   console.log('action: removeTodo called');
   return { type: 'REMOVE_TODO', id };
 }
+
+export function movePiece(location){
+  console.log('action: movePiece called');
+  return {type: 'MOVE_PIECE', location}
+}
